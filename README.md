@@ -4,6 +4,45 @@
 
 ## 安装
 
+### 方式一：全局安装（推荐）
+
+```bash
+npx skills add Stanley-baby/love-expert
+```
+
+安装后，skill 会被添加到全局目录 `~/.agents/skills/love-expert`，可通过关键词自动触发。
+
+### 方式二：添加斜杠命令（可选）
+
+如果你想使用 `/love-expert` 斜杠命令，需要创建软链接到 OpenCode 本地目录：
+
+```bash
+# 创建软链接
+ln -s ~/.agents/skills/love-expert ~/.config/opencode/skills/love-expert
+```
+
+或者使用自定义命令模板方式：
+
+```bash
+# 创建命令目录（如果不存在）
+mkdir -p ~/.config/opencode/command
+
+# 创建 love 命令
+cat > ~/.config/opencode/command/love.md << 'EOF'
+---
+description: 恋爱专家，帮你解决恋爱中的各种问题
+---
+
+# 恋爱专家
+
+$ARGUMENTS
+EOF
+```
+
+**两种触发方式：**
+- `/love-expert` - Skill 方式（需要软链接）
+- `/love` - 命令模板方式
+
 ```bash
 npx skills add Stanley-baby/love-expert
 ```
