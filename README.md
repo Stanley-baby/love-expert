@@ -43,6 +43,62 @@ EOF
 - `/love-expert` - Skill 方式（需要软链接）
 - `/love` - 命令模板方式
 
+### 方式三：快捷加载存档（可选）
+
+新增 `/love-load` 指令，直接加载指定对象存档作为上下文，跳过“是否有对象存档”的询问：
+
+```bash
+# 创建 love-load 命令
+cat > ~/.config/opencode/command/love-load.md << 'EOF'
+---
+description: 恋爱专家-加载对象存档
+---
+
+# 恋爱专家（加载存档）
+#@memory load $ARGUMENTS
+EOF
+```
+
+使用示例：
+
+```
+/love-load user=default target=小A
+```
+
+### 方式四：快捷存档（可选）
+
+新增 `/love-save` 指令，在会话中或结束时快速写入存档摘要：
+
+```bash
+# 创建 love-save 命令
+cat > ~/.config/opencode/command/love-save.md << 'EOF'
+---
+description: 恋爱专家-保存对象存档
+---
+
+# 恋爱专家（保存存档）
+#@memory save $ARGUMENTS
+EOF
+```
+
+使用示例：
+
+```
+/love-save user=default target=小A summary="对方回复变慢，先放缓推进"
+```
+
+快捷输入（用于咨询，不是存档）：
+
+```
+/love =小A-她现在主动找我了，跟我说今晚有空
+```
+
+不传 summary 时将自动生成详细摘要：
+
+```
+/love-save user=default target=小A
+```
+
 ```bash
 npx skills add Stanley-baby/love-expert
 ```
@@ -202,5 +258,3 @@ npx skills add Stanley-baby/love-expert
 ## License
 
 MIT
-
-
